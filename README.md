@@ -1,2 +1,5 @@
 # wp-galdnieki
-# wp-galdnieki
+
+`login: admin`
+
+`password: test`

@@ -2,6 +2,7 @@
 
 # Application
 src/web/app/plugins/*
+!src/web/app/plugins/custom*
 !src/web/app/plugins/.gitkeep
 src/web/app/mu-plugins/*/
 src/web/app/upgrade

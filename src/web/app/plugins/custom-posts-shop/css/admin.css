@@ -1,0 +1,9 @@
+.wp-picker-container {
+    display: inline-block;
+}
+
+.remove-door-color, .remove-door-price {
+    margin-left: 30px;
+    cursor: pointer;
+    text-decoration: underline;
+}
