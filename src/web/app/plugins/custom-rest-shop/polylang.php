@@ -3,6 +3,7 @@
 // fix polylang language segmentation
 add_action( 'rest_api_init' , 'polylang_json_api_init' );
 
+// allow this: http://gald.lv:8080/wp-json/wp/v2/door?lang=ru
 function polylang_json_api_init(){
     global $polylang;
     $default = pll_default_language();

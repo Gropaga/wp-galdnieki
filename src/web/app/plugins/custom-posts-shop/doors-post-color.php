@@ -5,6 +5,11 @@ add_action( 'add_meta_boxes', 'add_color_meta' );
 /* Saving the data */
 add_action( 'save_post', 'color_meta_save' );
 
+register_meta( 'door', 'doorColor', [
+    'single' => true,
+    'show_in_rest' => true,
+]);
+
 /* Adding the main meta box container to the post editor screen */
 function add_color_meta() {
     add_meta_box(

@@ -1,5 +1,10 @@
 <?php
 
+register_meta( 'door', 'showOnLandingPage', [
+    'type' => 'string',
+    'single' => true,
+    'show_in_rest' => true,
+]);
 
 add_action( 'add_meta_boxes', 'landing_page_checkbox_meta' );
 
@@ -40,7 +45,7 @@ function landing_page_checkbox_meta_save( $post_id ) {
         return;
     }
 
-    if ( !wp_verify_nonce( $_POST['landing_page_checkbox_nonce'], plugin_basename( __FILE__ ) ) ) {
+    if (!isset($_POST['landing_page_checkbox_nonce']) || !wp_verify_nonce( $_POST['landing_page_checkbox_nonce'], plugin_basename( __FILE__ ) ) ) {
         return;
     }
     $showOnlandingPage = $_POST['showOnLandingPage'] ?? 0;
