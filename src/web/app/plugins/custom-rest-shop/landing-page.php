@@ -25,7 +25,7 @@ function get_landing_page( ) {
                 $galleryImages = json_decode($c['gallery']);
                 $color[$key]['gallery'] = [];
                 foreach ($galleryImages as $gI) {
-                    $color[$key]['gallery'][$gI] = wp_get_attachment_metadata($gI);
+                    $color[$key]['gallery'][] = wp_get_attachment_metadata($gI);
                 }
             }
         }
