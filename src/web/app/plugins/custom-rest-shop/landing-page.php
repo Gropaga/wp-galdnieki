@@ -19,10 +19,21 @@ function get_landing_page( ) {
         $doorsQuery->the_post();
         $language = pll_get_post_language($doorsQuery->post->ID);
 
+        $color = $doorsQuery->post->doorColor;
+        foreach ($color as $key => $c) {
+            if (!empty($c['gallery'])) {
+                $galleryImages = json_decode($c['gallery']);
+                $color[$key]['gallery'] = [];
+                foreach ($galleryImages as $gI) {
+                    $color[$key]['gallery'][$gI] = wp_get_attachment_metadata($gI);
+                }
+            }
+        }
+
         $doors[$language][$doorsQuery->post->ID] = [
             'post' => $doorsQuery->post,
-            'doorColor' => $doorsQuery->post->doorColor,
-            'doorPrice' => $doorsQuery->post->doorPrice,
+            'color' => $color,
+            'price' => $doorsQuery->post->doorPrice,
             'showOnLandingPage' => $doorsQuery->post->showOnLandingPage == 'on',
         ];
     }
@@ -32,6 +43,7 @@ function get_landing_page( ) {
         'jumbo' => [
             'lv' => [
                 'heading' => 'Heading (lv)',
+                'sub-text' => 'Sub text (lv)',
                 'text' => 'Text (lv)',
                 'button-text' => 'Button text (lv)',
                 'button-link' => '/'
@@ -39,6 +51,7 @@ function get_landing_page( ) {
             'ru' => [
                 'heading' => 'Heading (ru)',
                 'text' => 'Text (ru)',
+                'sub-text' => 'Sub text (ru)',
                 'button-text' => 'Button text (ru)',
                 'button-link' => '/ru'
             ]

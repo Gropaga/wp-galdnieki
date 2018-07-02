@@ -92,7 +92,6 @@ function door_color_init() {
                     if (galleryState) {
                         var selection = frame.state().get('selection');
                         JSON.parse(galleryState).map(function(item) {
-                            console.log(item);
                             selection.add(wp.media.attachment(item));
                         });
                     }
