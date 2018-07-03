@@ -102,13 +102,19 @@ function door_meta_save( $post_id ) {
         $doorPrice = $_POST['doorPrice'];
     }
 
+    // normalize array keys 0, 1, 2, 3, 4... instead of 1, 4, 5, 6...
+    $normalizedDoorPrice = [];
+    foreach ($doorPrice as $d) {
+        $normalizedDoorPrice[] = $d;
+    }
+
     // Updating the doorPrice meta data for all translations
     if (function_exists('pll_languages_list')) {
         foreach (pll_languages_list() as $lang) {
-            update_post_meta(pll_get_post($post_id, $lang),'doorPrice',$doorPrice);
+            update_post_meta(pll_get_post($post_id, $lang),'doorPrice',$normalizedDoorPrice);
         }
     } else {
-        update_post_meta($post_id,'doorPrice',$doorPrice);
+        update_post_meta($post_id,'doorPrice',$normalizedDoorPrice);
     }
 }
 

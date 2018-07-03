@@ -25,7 +25,13 @@ function get_landing_page( ) {
                 $galleryImages = json_decode($c['gallery']);
                 $color[$key]['gallery'] = [];
                 foreach ($galleryImages as $gI) {
-                    $color[$key]['gallery'][] = wp_get_attachment_metadata($gI);
+                    $color[$key]['gallery'][] = [
+                        'thumbnail' => wp_get_attachment_image_src($gI, 'thumbnail'),
+                        'medium' => wp_get_attachment_image_src($gI, 'medium'),
+                        'medium_large' => wp_get_attachment_image_src($gI, 'medium_large'),
+                        'full' => wp_get_attachment_image_src($gI, 'full'),
+                        'large' => wp_get_attachment_image_src($gI, 'large')
+                    ];
                 }
             }
         }

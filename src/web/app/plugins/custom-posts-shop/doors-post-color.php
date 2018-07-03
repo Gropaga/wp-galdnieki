@@ -135,14 +135,20 @@ function color_meta_save( $post_id ) {
     if (isset($_POST['doorColor'])) {
         $doorColor = $_POST['doorColor'];
     }
-    // Updating the doorColor meta data
 
+    // normalize array keys 0, 1, 2, 3, 4... instead of 1, 4, 5, 6...
+    $normalizedDoorColor = [];
+    foreach ($doorColor as $d) {
+        $normalizedDoorColor[] = $d;
+    }
+
+    // Updating the doorColor meta data
     if (function_exists('pll_languages_list')) {
         foreach (pll_languages_list() as $lang) {
-            update_post_meta(pll_get_post($post_id, $lang),'doorColor',$doorColor);
+            update_post_meta(pll_get_post($post_id, $lang),'doorColor',$normalizedDoorColor);
         }
     } else {
-        update_post_meta($post_id,'doorColor',$doorColor);
+        update_post_meta($post_id,'doorColor',$normalizedDoorColor);
     }
 
 

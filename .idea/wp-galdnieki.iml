@@ -5,9 +5,13 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/johnpbloch/wordpress" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/johnpbloch/wordpress-core-installer" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/larapack/dd" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/oscarotero/env" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/roots/wp-password-bcrypt" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/squizlabs/php_codesniffer" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/vlucas/phpdotenv" />
     </content>
     <orderEntry type="inheritedJdk" />
