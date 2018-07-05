@@ -14,10 +14,9 @@ function get_landing_page( ) {
         )
     );
 
-    $doors = ['lv' => [], 'ru' => []];
     while ($doorsQuery->have_posts()) {
         $doorsQuery->the_post();
-        $language = pll_get_post_language($doorsQuery->post->ID);
+        $locale = pll_get_post_language($doorsQuery->post->ID);
 
         $color = $doorsQuery->post->doorColor;
         foreach ($color as $key => $c) {
@@ -36,10 +35,16 @@ function get_landing_page( ) {
             }
         }
 
-        $doors[$language][$doorsQuery->post->ID] = [
-            'post' => $doorsQuery->post,
+        $doorPrice = $doorsQuery->post->doorPrice;
+
+        $doors[$doorsQuery->post->ID] = [
+            'id' => $doorsQuery->post->ID,
+            'locale' => $locale,
+            'title' => $doorsQuery->post->post_title,
+            'content' => $doorsQuery->post->post_content,
+            'excerpt' => $doorsQuery->post->post_excerpt,
             'color' => $color,
-            'price' => $doorsQuery->post->doorPrice,
+            'price' => $doorPrice,
             'showOnLandingPage' => $doorsQuery->post->showOnLandingPage == 'on',
         ];
     }
@@ -47,19 +52,21 @@ function get_landing_page( ) {
     return [
         'landingImage' => get_header_image(),
         'jumbo' => [
-            'lv' => [
+            [
+                'locale' => 'lv',
                 'heading' => 'Heading (lv)',
-                'sub-text' => 'Sub text (lv)',
+                'subText' => 'Sub text (lv)',
                 'text' => 'Text (lv)',
-                'button-text' => 'Button text (lv)',
-                'button-link' => '/'
+                'buttonText' => 'Button text (lv)',
+                'buttonLink' => '/'
             ],
-            'ru' => [
+            [
+                'locale' => 'ru',
                 'heading' => 'Heading (ru)',
                 'text' => 'Text (ru)',
-                'sub-text' => 'Sub text (ru)',
-                'button-text' => 'Button text (ru)',
-                'button-link' => '/ru'
+                'subText' => 'Sub text (ru)',
+                'buttonText' => 'Button text (ru)',
+                'buttonLink' => '/ru'
             ]
         ],
         'doors' => $doors
