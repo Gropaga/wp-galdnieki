@@ -45,6 +45,10 @@ function get_landing_page( ) {
             'excerpt' => $doorsQuery->post->post_excerpt,
             'color' => $color,
             'price' => $doorPrice,
+            'selected' => [
+                'height' => $doorPrice[0]['height'] ?? 0,
+                'width' => $doorPrice[0]['width'] ?? 0,
+            ],
             'showOnLandingPage' => $doorsQuery->post->showOnLandingPage == 'on',
         ];
     }
