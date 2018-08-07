@@ -639,7 +639,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/polylang.2.3.7.zip",
-                "reference": "tags/2.3.7",
+                "reference": null,
                 "shasum": null
             },
             "require": {
