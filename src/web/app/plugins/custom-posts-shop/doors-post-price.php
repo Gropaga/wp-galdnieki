@@ -29,16 +29,19 @@ function door_price_init() {
 
     $count = 0;
     if (is_array($doorPrice) && count($doorPrice) > 0) {
+
+        var_dump($doorPrice);
+
         foreach( $doorPrice as $doorDetail ) {
             printf(
                 '<p>' .
                 __('Height') . ': <input type="text" name="doorPrice[%1$s][height]" value="%2$s" /> ' .
                 __('Width') . ': <input type="text" name="doorPrice[%1$s][width]" value="%3$s" /> ' .
                 __('Material') . ': <select name="doorPrice[%1$s][material]">
-                    <option value="ash" ' . ($doorDetail['material'] == 'ash' ? 'selected' : '') . '>'.__('Ash').'</option>
-                    <option value="oak" ' . ($doorDetail['material'] == 'oak' ? 'selected' : '') . '>'.__('Oak').'</option>
-                    <option value="birch" ' . ($doorDetail['material'] == 'birch' ? 'selected' : '') . '>'.__('Birch').'</option>
-                    <option value="nut" ' . ($doorDetail['material'] == 'nut' ? 'selected' : '') . '>'.__('Nut').'</option>
+                    <option value="Ash" ' . ($doorDetail['material'] == 'Ash' ? 'selected' : '') . '>'.__('Ash').'</option>
+                    <option value="Oak" ' . ($doorDetail['material'] == 'Oak' ? 'selected' : '') . '>'.__('Oak').'</option>
+                    <option value="Birch" ' . ($doorDetail['material'] == 'Birch' ? 'selected' : '') . '>'.__('Birch').'</option>
+                    <option value="Nut" ' . ($doorDetail['material'] == 'Nut' ? 'selected' : '') . '>'.__('Nut').'</option>
                 </select> ' .
                 __('Price') . ': <input type="text" name="doorPrice[%1$s][price]" value="%4$s" /> EUR ' .
                 '<a class="remove-door-price">'.__('Remove').'</a>' .
@@ -65,10 +68,10 @@ function door_price_init() {
                     '<?= __('Height') ?>: <input type="text" name="doorPrice['+count+'][height]" /> ' +
                     '<?= __('Width') ?>: <input type="text" name="doorPrice['+count+'][width]" /> ' +
                     '<?= __('Material') ?>: <select type="text" name="doorPrice['+count+'][material]">' +
-                    '<option value="ash"><?= __('Ash') ?></option>' +
-                    '<option value="oak"><?= __('Oak') ?></option>' +
-                    '<option value="birch"><?= __('Birch') ?></option>' +
-                    '<option value="nut"><?= __('Nut') ?></option>' +
+                    '<option value="Ash"><?= __('Ash') ?></option>' +
+                    '<option value="Oak"><?= __('Oak') ?></option>' +
+                    '<option value="Birch"><?= __('Birch') ?></option>' +
+                    '<option value="Nut"><?= __('Nut') ?></option>' +
                     '</select> ' +
                     '<?= __('Price') ?>: <input type="text" name="doorPrice['+count+'][price]" /> EUR ' +
                     '<a class="remove-door-price"><?php echo "Remove"; ?></a>' +
