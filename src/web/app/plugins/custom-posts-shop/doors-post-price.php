@@ -29,9 +29,6 @@ function door_price_init() {
 
     $count = 0;
     if (is_array($doorPrice) && count($doorPrice) > 0) {
-
-        var_dump($doorPrice);
-
         foreach( $doorPrice as $doorDetail ) {
             printf(
                 '<p>' .
