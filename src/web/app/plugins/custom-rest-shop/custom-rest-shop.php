@@ -17,6 +17,8 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 require_once('landing-page.php');
+require_once('doors.php');
+require_once('door.php');
 require_once('polylang.php');
 
 ?>
