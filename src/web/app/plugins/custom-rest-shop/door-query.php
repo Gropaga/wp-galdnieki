@@ -1,7 +1,7 @@
 <?php
 
 function door_query($query_array) {
-    $doorsQuery = new WP_Query($query_array);
+    $doorsQuery = new WP_Query($query_array + ['posts_per_page' => -1]);
     $doors = [];
     while ($doorsQuery->have_posts()) {
         $doorsQuery->the_post();
