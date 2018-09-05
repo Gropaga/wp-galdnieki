@@ -16,7 +16,7 @@ if ( !function_exists( 'add_action' ) ) {
     exit;
 }
 
-require_once('landing-page.php');
+require_once('home.php');
 require_once('doors.php');
 require_once('door.php');
 require_once('polylang.php');

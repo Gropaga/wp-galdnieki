@@ -2,7 +2,7 @@
 
 require_once 'door-query.php';
 
-function get_landing_page( ) {
+function get_home() {
     return [
         'landingImage' => get_header_image(),
         'jumbo' => [
@@ -26,19 +26,13 @@ function get_landing_page( ) {
         'doors' => door_query(array(
             'post_type' => 'door',
             'lang' => 'ru, lv',
-            'meta_query' => array(
-                array(
-                    'key' => 'showOnLandingPage',
-                    'value' => 'on',
-                )
-            ),
         ))
     ];
 }
 
 add_action( 'rest_api_init', function () {
-    register_rest_route( 'shop/v1', '/landing-page/', array(
+    register_rest_route( 'shop/v1', '/home/', array(
         'methods' => 'GET',
-        'callback' => 'get_landing_page',
+        'callback' => 'get_home',
     ) );
 } );
