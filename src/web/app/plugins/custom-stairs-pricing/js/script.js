@@ -1,23 +1,37 @@
 jQuery( document ).ready( function( $ ) {
-    $('.upload_image_button').click(function () {
-        var send_attachment_bkp = wp.media.editor.send.attachment;
-        var button = $(this);
-        wp.media.editor.send.attachment = function (props, attachment) {
-            $(button).parent().prev().attr('src', attachment.url);
-            console.log($(button).prev());
-            console.log('attachment', attachment);
-            $(button).prev().val(attachment.id);
-            wp.media.editor.send.attachment = send_attachment_bkp;
-        };
-        wp.media.editor.open(button.id);
-        return false;
-    });
+    $(document.body).on('click','.edit-gallery',function (event) {
+        event.preventDefault();
 
-    $('.remove_image_button').click(function () {
-        var src = $(this).parent().prev().attr('data-src');
-        $(this).parent().prev().attr('src', src);
-        console.log($('#image1'));
-        $(this).prev().prev().val('');
-        return false;
+        // Create a new media frame
+        var frame = wp.media({
+            title: 'Select stair images',
+            button: {
+                text: 'Update stairs gallery',
+            },
+            multiple: 'add'
+        });
+
+        frame.on('open',function() {
+            var galleryState = $('#stairs-gallery').val();
+
+            if (galleryState) {
+                var selection = frame.state().get('selection');
+                JSON.parse(galleryState).map(function(item) {
+                    selection.add(wp.media.attachment(item));
+                });
+            }
+        });
+
+        // When an image is selected in the media frame...
+        frame.on( 'select', function() {
+            var attachment = frame.state().get('selection').toJSON().map(function(item) {
+                return item.id;
+            });
+
+            $('#stairs-gallery').val(JSON.stringify(attachment));
+        });
+
+        // Finally, open the modal on click
+        frame.open();
     });
 });
