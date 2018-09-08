@@ -10,7 +10,7 @@ function get_stairs() {
 }
 
 function getDescription($acc, $lang) {
-    return $acc + [$lang => get_option('stairs-description-'.$lang)];
+    return $acc + [$lang => wpautop( get_option('stairs-description-'.$lang) )];
 }
 
 function getGallery($stairIds) {
