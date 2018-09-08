@@ -3,14 +3,14 @@
 function get_stairs() {
     return [
         'stairs' => [
-            'description' => array_map('getDescription', ['lv', 'ru']),
+            'description' => array_reduce(['lv', 'ru'], 'getDescription', []),
             'gallery' => getGallery(json_decode(get_option('stairs-gallery'))),
         ]
     ];
 }
 
-function getDescription($lang) {
-    return get_option('stairs-description-'.$lang);
+function getDescription($acc, $lang) {
+    return $acc + [$lang => get_option('stairs-description-'.$lang)];
 }
 
 function getGallery($stairIds) {
