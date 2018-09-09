@@ -38,24 +38,14 @@ function codex_door_init() {
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => null,
-        'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions')
+        'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
+        'menu_icon'          => 'dashicons-store'
     );
 
     register_post_type( 'door', $args );
 }
 
-add_action( 'admin_enqueue_scripts', 'mw_enqueue_color_picker' );
-function mw_enqueue_color_picker( $hook_suffix ) {
-    // first check that $hook_suffix is appropriate for your admin page
-    wp_enqueue_style( 'wp-color-picker' );
-    wp_enqueue_script( 'wp-color-picker' );
-}
 
-function load_custom_wp_admin_style() {
-    wp_register_style( 'custom_posts_shop_admin_css', plugin_dir_url(dirname(__FILE__)).'custom-posts-shop/css/admin.css', false, '1.0.0' );
-    wp_enqueue_style( 'custom_posts_shop_admin_css' );
-}
-add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
-
+include_once('lib/enqueue.php');
 include_once('doors-post-price.php');
 include_once('doors-post-color.php');

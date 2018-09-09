@@ -18,6 +18,7 @@ if ( !function_exists( 'add_action' ) ) {
 
 require_once('home.php');
 require_once('doors.php');
+require_once('windows.php');
 require_once('door.php');
 require_once('stairs.php');
 require_once('polylang.php');

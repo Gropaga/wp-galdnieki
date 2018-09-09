@@ -1,6 +1,7 @@
 <?php
 
 require_once 'door-query.php';
+require_once 'window-query.php';
 
 function get_home() {
     return [
@@ -25,6 +26,10 @@ function get_home() {
         ],
         'doors' => door_query(array(
             'post_type' => 'door',
+            'lang' => 'ru, lv',
+        )),
+        'windows' => window_query(array(
+            'post_type' => 'window',
             'lang' => 'ru, lv',
         ))
     ];

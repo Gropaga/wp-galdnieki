@@ -17,7 +17,7 @@ function landing_page_checkbox_meta() {
         'show-on-landing-page',
         __('Show on landing page'),
         'landing_page_checkbox_init',
-        ['door']); // post type
+        ['door', 'window']); // post type
 }
 
 /*Printing the box content */

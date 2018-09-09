@@ -1,9 +1,9 @@
 <?php
 
-add_action( 'add_meta_boxes', 'add_color_meta' );
+add_action( 'add_meta_boxes', 'add_color_meta_doors' );
 
 /* Saving the data */
-add_action( 'save_post', 'color_meta_save' );
+add_action( 'save_post', 'color_meta_save_doors' );
 
 register_meta( 'door', 'doorColor', [
     'single' => true,
@@ -11,7 +11,7 @@ register_meta( 'door', 'doorColor', [
 ]);
 
 /* Adding the main meta box container to the post editor screen */
-function add_color_meta() {
+function add_color_meta_doors() {
     add_meta_box(
         'door-color',
         __('Color'),
@@ -117,7 +117,7 @@ function door_color_init() {
 }
 
 /* Save function for the entered data */
-function color_meta_save( $post_id ) {
+function color_meta_save_doors( $post_id ) {
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
         return;
     }

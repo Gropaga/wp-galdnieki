@@ -16,7 +16,11 @@ if ( !function_exists( 'add_action' ) ) {
     exit;
 }
 
+
+
 require_once('doors-post.php');
+require_once('windows-post.php');
+
 require_once('show-on-landing-page-checkbox.php');
 
 ?>
