@@ -57,7 +57,6 @@ function landing_page_checkbox_meta_save( $post_id ) {
     } else {
         update_post_meta($post_id,'showOnLandingPage',$showOnlandingPage);
     }
-
 }
 
 ?>

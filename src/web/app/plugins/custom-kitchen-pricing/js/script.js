@@ -1,18 +1,18 @@
 jQuery( document ).ready( function( $ ) {
-    $(document.body).on('click','.edit-stairs-gallery',function (event) {
+    $(document.body).on('click','.edit-kitchen-gallery',function (event) {
         event.preventDefault();
 
         // Create a new media frame
         var frame = wp.media({
-            title: 'Select stair images',
+            title: 'Select kitchen images',
             button: {
-                text: 'Update stairs gallery',
+                text: 'Update kitchen gallery',
             },
             multiple: 'add'
         });
 
         frame.on('open',function() {
-            var galleryState = $('#stairs-gallery').val();
+            var galleryState = $('#kitchen-gallery').val();
 
             if (galleryState) {
                 var selection = frame.state().get('selection');
@@ -28,7 +28,7 @@ jQuery( document ).ready( function( $ ) {
                 return item.id;
             });
 
-            $('#stairs-gallery').val(JSON.stringify(attachment));
+            $('#kitchen-gallery').val(JSON.stringify(attachment));
         });
 
         // Finally, open the modal on click

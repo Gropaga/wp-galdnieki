@@ -11,25 +11,25 @@ Version: 0.1
 */
 
 // create custom plugin settings menu
-add_action('admin_menu', 'my_cool_plugin_create_menu');
-add_action( 'admin_init', 'init_script' );
+add_action('admin_menu', 'stairs_create_menu');
+add_action( 'admin_init', 'init_stairs_script' );
 
-function my_cool_plugin_create_menu() {
+function stairs_create_menu() {
 
     //create new top-level menu
     add_menu_page(__('Лестницы'), __('Лестницы'), 'administrator', __FILE__, 'stairs_pricing_page' , 'dashicons-chart-bar', 90);
 
     //call register settings function
     add_action( 'admin_init', 'register_my_cool_plugin_settings' );
-    add_action( 'admin_enqueue_scripts', 'arthur_load_scripts_admin' );
+    add_action( 'admin_enqueue_scripts', 'stairs_load_scripts_admin' );
 
 }
 
-function arthur_load_scripts_admin() {
+function stairs_load_scripts_admin() {
     wp_enqueue_media();
 }
 
-function init_script() {
+function init_stairs_script() {
     // Register our script.
     wp_enqueue_script( 'custom-stairs-pricing', plugins_url( '/js/script.js', __FILE__ ) );
 }
@@ -70,7 +70,7 @@ function stairs_pricing_page() {
 
             ?> <h3><?= __('Gallery') ?></h3>
             <input type="hidden" id="stairs-gallery" name="stairs-gallery" value="<?php echo esc_attr( get_option('stairs-gallery') ); ?>" />
-            <button class="edit-gallery"><?= __('Edit Gallery') ?></button>
+            <button class="edit-stairs-gallery"><?= __('Edit Gallery') ?></button>
 
             <?php submit_button(); ?>
 

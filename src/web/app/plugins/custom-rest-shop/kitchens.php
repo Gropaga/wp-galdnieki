@@ -1,21 +1,21 @@
 <?php
 
-function get_stairs() {
+function get_kitchens() {
     return [
-        'stairs' => [
-            'description' => array_reduce(['lv', 'ru'], 'getStairsDescription', []),
-            'gallery' => getStairsGallery(json_decode(get_option('stairs-gallery'))),
+        'kitchens' => [
+            'description' => array_reduce(['lv', 'ru'], 'getKitchenDescription', []),
+            'gallery' => getKitchenGallery(json_decode(get_option('kitchen-gallery'))),
         ]
     ];
 }
 
-function getStairsDescription($acc, $lang) {
-    return $acc + [$lang => wpautop( get_option('stairs-description-'.$lang) )];
+function getKitchenDescription($acc, $lang) {
+    return $acc + [$lang => wpautop( get_option('kitchen-description-'.$lang) )];
 }
 
-function getStairsGallery($stairIds) {
+function getKitchenGallery($kitchenIds) {
     $gallery = [];
-    foreach ($stairIds as $id) {
+    foreach ($kitchenIds as $id) {
         $gallery[] = [
             'thumbnail' => wp_get_attachment_image_src($id, 'thumbnail'),
             'medium' => wp_get_attachment_image_src($id, 'medium'),
@@ -28,8 +28,8 @@ function getStairsGallery($stairIds) {
 }
 
 add_action( 'rest_api_init', function () {
-    register_rest_route( 'shop/v1', '/stairs/', array(
+    register_rest_route( 'shop/v1', '/kitchens/', array(
         'methods' => 'GET',
-        'callback' => 'get_stairs',
+        'callback' => 'get_kitchens',
     ) );
 } );
