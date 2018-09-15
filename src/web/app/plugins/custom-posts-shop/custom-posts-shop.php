@@ -4,7 +4,7 @@
  * @version 1.7
  */
 /*
-Plugin Name: Doors Post
+Plugin Name: Custom Shopcustom-page.php:53 Pricing
 Description: Custom post types for shop catalogue
 Author: Maksims Vorobjovs
 Version: 0.1

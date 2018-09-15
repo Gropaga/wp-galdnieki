@@ -11,8 +11,6 @@ class CustomPost {
 
     const POST_TYPE = '__nothing__';
 
-    static function reduceEnableArray() {}
-
     public static function create($enable = []) {
         add_action( 'init', [static::class, 'init']);
         add_action('admin_enqueue_scripts', [static::class, 'enqueue_scripts']);
@@ -36,10 +34,6 @@ class CustomPost {
             add_action('add_meta_boxes', [static::class, 'add_landing_page_checkbox_meta']);
             add_action('save_post', [static::class, 'landing_page_checkbox_meta_save']);
         }
-    }
-
-    public static function init() {
-        register_post_type(static::POST_TYPE, static::POST_TYPE);
     }
 
     public static function add_color_meta() {
