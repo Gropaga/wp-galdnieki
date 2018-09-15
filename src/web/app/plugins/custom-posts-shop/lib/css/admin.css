@@ -2,7 +2,7 @@
     display: inline-block;
 }
 
-.remove-door-color, .remove-door-price {
+.remove-item {
     margin-left: 30px;
     cursor: pointer;
     text-decoration: underline;

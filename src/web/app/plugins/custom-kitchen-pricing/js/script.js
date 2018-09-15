@@ -29,7 +29,7 @@ jQuery( document ).ready( function( $ ) {
             });
 
             $('#kitchen-gallery').val(JSON.stringify(attachment));
-        });
+        });show-on-landing-page-checkbox.php
 
         // Finally, open the modal on click
         frame.open();

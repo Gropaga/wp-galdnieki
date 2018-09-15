@@ -16,11 +16,24 @@ if ( !function_exists( 'add_action' ) ) {
     exit;
 }
 
+include_once 'DoorsPost.php';
+DoorsPost::create([
+    DoorsPost::COLOR_COMPONENT,
+    DoorsPost::PRICE_COMPONENT,
+    DoorsPost::LANDING_COMPONENT,
+]);
 
+include_once 'WindowsPost.php';
+WindowsPost::create([
+    DoorsPost::COLOR_COMPONENT,
+    DoorsPost::PRICE_COMPONENT,
+    DoorsPost::LANDING_COMPONENT,
+]);
 
-require_once('doors-post.php');
-require_once('windows-post.php');
-
-require_once('show-on-landing-page-checkbox.php');
+include_once 'PaintingPost.php';
+PaintingPost::create([
+    DoorsPost::PRICE_COMPONENT,
+    DoorsPost::LANDING_COMPONENT
+]);
 
 ?>
