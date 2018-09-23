@@ -3,7 +3,7 @@
 include_once 'CustomPage.php';
 
 class ContactsPage extends CustomPage {
-    const PAGE_TYPE = 'contact';
+    const PAGE_TYPE = 'contacts';
 
     public static function init() {
         $settings = [

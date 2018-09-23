@@ -177,7 +177,9 @@ class CustomPost {
         ); // post type
     }
 
-    public static function price_html($enableMaterials = true) {
+    public static function price_html($post, $arguments) {
+        $options = ($arguments['args']);
+
         global $post;
         // Use nonce for verification
         wp_nonce_field( plugin_basename( __FILE__ ), static::POST_TYPE . '_price_nonce' );
@@ -194,12 +196,12 @@ class CustomPost {
                     '<p>' .
                     __('Height') . ': <input type="text" name="' . static::POST_TYPE . 'Price[%1$s][height]" value="%2$s" /> ' .
                     __('Width') . ': <input type="text" name="' . static::POST_TYPE . 'Price[%1$s][width]" value="%3$s" /> ' .
-                    $enableMaterials ? __('Material') . ': <select name="' . static::POST_TYPE . 'Price[%1$s][material]">
+                    (!isset($options['disableMaterials']) ? __('Material') . ': <select name="' . static::POST_TYPE . 'Price[%1$s][material]">
                         <option value="Ash" ' . ($itemDetails['material'] == 'Ash' ? 'selected' : '') . '>'.__('Ash').'</option>
                         <option value="Oak" ' . ($itemDetails['material'] == 'Oak' ? 'selected' : '') . '>'.__('Oak').'</option>
                         <option value="Birch" ' . ($itemDetails['material'] == 'Birch' ? 'selected' : '') . '>'.__('Birch').'</option>
                         <option value="Nut" ' . ($itemDetails['material'] == 'Nut' ? 'selected' : '') . '>'.__('Nut').'</option>
-                    </select> ' : '' .
+                    </select> ' : '') .
                     __('Price') . ': <input type="text" name="' . static::POST_TYPE . 'Price[%1$s][price]" value="%4$s" /> EUR ' .
                     '<a class="remove-item remove-' . static::POST_TYPE .' -price">'.__('Remove').'</a>' .
                     '</p>',
@@ -223,7 +225,7 @@ class CustomPost {
                         '<p>' +
                         '<?= __('Height') ?>: <input type="text" name="<?= static::POST_TYPE ?>Price['+count+'][height]" /> ' +
                         '<?= __('Width') ?>: <input type="text" name="<?= static::POST_TYPE ?>Price['+count+'][width]" /> ' +
-                        <?php if ($enableMaterials): ?>
+                        <?php if (!isset($options['disableMaterials'])): ?>
                         '<?= __('Material') ?>: <select type="text" name="<?= static::POST_TYPE ?>Price['+count+'][material]">' +
                         '<option value="Ash"><?= __('Ash') ?></option>' +
                         '<option value="Oak"><?= __('Oak') ?></option>' +

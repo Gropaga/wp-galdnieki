@@ -18,9 +18,13 @@ if ( !function_exists( 'add_action' ) ) {
 
 require_once('home.php');
 require_once('doors.php');
-require_once('windows.php');
 require_once('door.php');
+require_once('interior.php');
+require_once('interiors.php');
+require_once('windows.php');
+require_once('window.php');
 require_once('stairs.php');
+require_once('contacts.php');
 require_once('kitchens.php');
 require_once('polylang.php');
 

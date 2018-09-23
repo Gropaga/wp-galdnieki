@@ -11,9 +11,9 @@ function get_windows( ) {
     ];
 }
 
-add_action( 'rest_api_init', function () {
+add_action('rest_api_init', function () {
     register_rest_route( 'shop/v1', '/windows/', array(
         'methods' => 'GET',
         'callback' => 'get_windows',
-    ) );
-} );
+    ));
+});

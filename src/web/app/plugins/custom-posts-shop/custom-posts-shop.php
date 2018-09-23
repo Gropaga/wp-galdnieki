@@ -4,7 +4,7 @@
  * @version 1.7
  */
 /*
-Plugin Name: Custom Shopcustom-page.php:53 Pricing
+Plugin Name: Custom Catalogue
 Description: Custom post types for shop catalogue
 Author: Maksims Vorobjovs
 Version: 0.1
@@ -25,15 +25,16 @@ DoorsPost::create([
 
 include_once 'WindowsPost.php';
 WindowsPost::create([
-    DoorsPost::COLOR_COMPONENT,
-    DoorsPost::PRICE_COMPONENT,
-    DoorsPost::LANDING_COMPONENT,
+    WindowsPost::COLOR_COMPONENT,
+    WindowsPost::PRICE_COMPONENT,
+    WindowsPost::LANDING_COMPONENT,
 ]);
 
-include_once 'PaintingPost.php';
-PaintingPost::create([
-    DoorsPost::PRICE_COMPONENT,
-    DoorsPost::LANDING_COMPONENT
+include_once 'InteriorPost.php';
+InteriorPost::create([
+    InteriorPost::COLOR_COMPONENT,
+    InteriorPost::PRICE_SHORT_COMPONENT,
+    InteriorPost::LANDING_COMPONENT
 ]);
 
 ?>

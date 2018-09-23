@@ -1,6 +1,6 @@
 <?php
 /**
- * @package CustomPagesShop
+ * @package CustomDescription
  * @version 1.7
  */
 /*
