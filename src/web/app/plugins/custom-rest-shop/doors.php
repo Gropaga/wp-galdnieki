@@ -4,10 +4,12 @@ require_once 'door-query.php';
 
 function get_doors( ) {
     return [
-        'doors' => door_query(array(
-            'post_type' => 'door',
-            'lang' => 'ru, lv',
-        ))
+        'data' => [
+            'doors' => door_query([
+                'post_type' => 'door',
+                'lang' => 'ru, lv',
+            ])
+        ]
     ];
 }
 

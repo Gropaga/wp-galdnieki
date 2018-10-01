@@ -2,9 +2,11 @@
 
 function get_stairs() {
     return [
-        'stairs' => [
-            'description' => array_reduce(['lv', 'ru'], 'getStairsDescription', []),
-            'gallery' => getStairsGallery(json_decode(get_option('stairs-gallery'))),
+        'data' => [
+            'stairs' => [
+                'description' => array_reduce(['lv', 'ru'], 'getStairsDescription', []),
+                'gallery' => getStairsGallery(json_decode(get_option('stairs-gallery'))),
+            ]
         ]
     ];
 }

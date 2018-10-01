@@ -2,9 +2,11 @@
 
 function get_kitchens() {
     return [
-        'kitchens' => [
-            'description' => array_reduce(['lv', 'ru'], 'getKitchenDescription', []),
-            'gallery' => getKitchenGallery(json_decode(get_option('kitchen-gallery'))),
+        'data' => [
+            'kitchens' => [
+                'description' => array_reduce(['lv', 'ru'], 'getKitchenDescription', []),
+                'gallery' => getKitchenGallery(json_decode(get_option('kitchen-gallery'))),
+            ]
         ]
     ];
 }

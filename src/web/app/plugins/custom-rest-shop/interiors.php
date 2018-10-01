@@ -4,10 +4,12 @@ require_once 'interior-query.php';
 
 function get_interiors( ) {
     return [
-        'interiors' => interior_query(array(
-            'post_type' => 'interior',
-            'lang' => 'ru, lv',
-        ))
+        'data' => [
+            'interiors' => interior_query([
+                'post_type' => 'interior',
+                'lang' => 'ru, lv',
+            ])
+        ]
     ];
 }
 

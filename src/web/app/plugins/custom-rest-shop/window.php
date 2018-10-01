@@ -4,11 +4,13 @@ require_once 'window-query.php';
 
 function get_window($data) {
     return [
-        'windows' => window_query(array(
-            'post_type' => 'window',
-            'lang' => 'ru, lv',
-            'p' => $data['id'],
-        ))
+        'data' => [
+            'windows' => window_query([
+                'post_type' => 'window',
+                'lang' => 'ru, lv',
+                'p' => $data['id'],
+            ])
+        ]
     ];
 }
 

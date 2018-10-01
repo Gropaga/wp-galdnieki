@@ -2,9 +2,11 @@
 
 function get_contacts() {
     return [
-        'contacts' => [
-            'description' => array_reduce(['lv', 'ru'], 'getContactDescription', []),
-            'gallery' => getContactGallery(json_decode(get_option('contacts-gallery'))),
+        'data' => [
+            'contacts' => [
+                'description' => array_reduce(['lv', 'ru'], 'getContactDescription', []),
+                'gallery' => getContactGallery(json_decode(get_option('contacts-gallery'))),
+            ]
         ]
     ];
 }
