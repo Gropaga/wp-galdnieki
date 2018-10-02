@@ -1,5 +1,7 @@
 *.log
 
+bin/bundle.js
+
 # Application
 src/web/app/plugins/*
 !src/web/app/plugins/custom*

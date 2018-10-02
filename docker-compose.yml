@@ -1,6 +1,13 @@
 version: '3'
 services:
-  web:
+  front:
+      image: nginx:latest
+      ports:
+        - "8888:80"
+      volumes:
+        - ./bin:/bin
+        - ./site-front.conf:/etc/nginx/conf.d/default.conf
+  back:
     image: nginx:latest
     ports:
       - "8080:80"
