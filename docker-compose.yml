@@ -6,6 +6,7 @@ services:
         - "8888:80"
       volumes:
         - ./bin:/bin
+        - ./src/web/app/uploads:/images
         - ./site-front.conf:/etc/nginx/conf.d/default.conf
   back:
     image: nginx:latest
