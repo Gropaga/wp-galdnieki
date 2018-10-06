@@ -8,18 +8,22 @@ function interior_query($query_array) {
         $locale = pll_get_post_language($interiorsQuery->post->ID);
 
         $color = $interiorsQuery->post->interiorColor;
-        foreach ($color as $key => $c) {
-            if (!empty($c['gallery'])) {
-                $galleryImages = json_decode($c['gallery']);
-                $color[$key]['gallery'] = [];
-                foreach ($galleryImages as $gI) {
-                    $color[$key]['gallery'][] = [
-                        'thumbnail' => wp_get_attachment_image_src($gI, 'thumbnail'),
-                        'medium' => wp_get_attachment_image_src($gI, 'medium'),
-                        'medium_large' => wp_get_attachment_image_src($gI, 'medium_large'),
-                        'full' => wp_get_attachment_image_src($gI, 'full'),
-                        'large' => wp_get_attachment_image_src($gI, 'large')
-                    ];
+        if (!$color) {
+            $color = [];
+        } else {
+            foreach ($color as $key => $c) {
+                if (!empty($c['gallery'])) {
+                    $galleryImages = json_decode($c['gallery']);
+                    $color[$key]['gallery'] = [];
+                    foreach ($galleryImages as $gI) {
+                        $color[$key]['gallery'][] = [
+                            'thumbnail' => wp_get_attachment_image_src($gI, 'thumbnail'),
+                            'medium' => wp_get_attachment_image_src($gI, 'medium'),
+                            'medium_large' => wp_get_attachment_image_src($gI, 'medium_large'),
+                            'full' => wp_get_attachment_image_src($gI, 'full'),
+                            'large' => wp_get_attachment_image_src($gI, 'large')
+                        ];
+                    }
                 }
             }
         }

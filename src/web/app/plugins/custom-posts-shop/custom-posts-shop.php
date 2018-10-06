@@ -21,6 +21,7 @@ DoorsPost::create([
     DoorsPost::COLOR_COMPONENT,
     DoorsPost::PRICE_COMPONENT,
     DoorsPost::LANDING_COMPONENT,
+    DoorsPost::SAVE_CACHE,
 ]);
 
 include_once 'WindowsPost.php';
@@ -28,13 +29,15 @@ WindowsPost::create([
     WindowsPost::COLOR_COMPONENT,
     WindowsPost::PRICE_COMPONENT,
     WindowsPost::LANDING_COMPONENT,
+    WindowsPost::SAVE_CACHE,
 ]);
 
 include_once 'InteriorPost.php';
 InteriorPost::create([
     InteriorPost::COLOR_COMPONENT,
     InteriorPost::PRICE_SHORT_COMPONENT,
-    InteriorPost::LANDING_COMPONENT
+    InteriorPost::LANDING_COMPONENT,
+    InteriorPost::SAVE_CACHE,
 ]);
 
 ?>

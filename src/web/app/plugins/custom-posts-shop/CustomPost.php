@@ -1,5 +1,7 @@
 <?php
 
+include_once WP_PLUGIN_DIR . '/custom-rest-shop/cache.php';
+
 class CustomPost {
     protected $settings;
     protected $postType;
@@ -8,6 +10,7 @@ class CustomPost {
     const PRICE_SHORT_COMPONENT = 'price_short';
     const COLOR_COMPONENT = 'color';
     const LANDING_COMPONENT = 'landing';
+    const SAVE_CACHE = 'save_cache';
 
     const POST_TYPE = '__nothing__';
 
@@ -34,6 +37,36 @@ class CustomPost {
             add_action('add_meta_boxes', [static::class, 'add_landing_page_checkbox_meta']);
             add_action('save_post', [static::class, 'landing_page_checkbox_meta_save']);
         }
+
+        if (in_array(static::SAVE_CACHE, $enable)) {
+            add_action('add_meta_boxes', [static::class, 'add_landing_page_checkbox_meta']);
+            add_action('save_post', [static::class, 'cache_json_post']);
+            add_action('wp_trash_post', [static::class, 'cache_json_post_remove'], 10 );
+        }
+    }
+
+    public static function cache_json_post_remove() {
+        global $post;
+
+        if ($post->post_type != static::POST_TYPE) {
+            return;
+        }
+
+        remove_json_cache(static::POST_TYPE, $post->ID);
+        save_json_cache(static::POST_TYPE);
+        save_json_cache('home');
+    }
+
+    public static function cache_json_post() {
+        global $post;
+
+        if (!$post || (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) || $post->post_type != static::POST_TYPE) {
+            return;
+        }
+
+        save_json_cache(static::POST_TYPE, $post->ID);
+        save_json_cache(static::POST_TYPE);
+        save_json_cache('home');
     }
 
     public static function add_color_meta() {
@@ -247,7 +280,9 @@ class CustomPost {
     }
 
     public static function meta_price_save( $post_id ) {
-        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        global $post;
+
+        if (!$post || $post->post_type != static::POST_TYPE || (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE)) {
             return;
         }
 
@@ -280,7 +315,9 @@ class CustomPost {
     }
 
     public static function color_meta_save( $post_id ) {
-        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        global $post;
+
+        if (!$post || (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) || $post->post_type != static::POST_TYPE) {
             return;
         }
 
@@ -340,7 +377,9 @@ class CustomPost {
     }
 
     public static function landing_page_checkbox_meta_save( $post_id ) {
-        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        global $post;
+
+        if (!$post || (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) || $post->post_type != static::POST_TYPE) {
             return;
         }
 

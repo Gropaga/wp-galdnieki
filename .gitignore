@@ -1,5 +1,8 @@
 *.log
 
+src/web/app/cache/*
+src/web/app/cache/.gitkeep
+
 bin/bundle.js
 
 # Application
