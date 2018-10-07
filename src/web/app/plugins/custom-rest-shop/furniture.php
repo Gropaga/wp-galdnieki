@@ -1,23 +1,23 @@
 <?php
 
-function get_kitchens() {
+function get_furniture() {
     return [
         'data' => [
-            'kitchens' => [
-                'description' => array_reduce(['lv', 'ru'], 'getKitchenDescription', []),
-                'gallery' => getKitchenGallery(json_decode(get_option('kitchen-gallery'))),
+            'furniture' => [
+                'description' => array_reduce(['lv', 'ru'], 'getFurnitureDescription', []),
+                'gallery' => getFurnitureGallery(json_decode(get_option('furniture-gallery'))),
             ]
         ]
     ];
 }
 
-function getKitchenDescription($acc, $lang) {
-    return $acc + [$lang => wpautop( get_option('kitchen-description-'.$lang) )];
+function getFurnitureDescription($acc, $lang) {
+    return $acc + [$lang => wpautop( get_option('furniture-description-'.$lang) )];
 }
 
-function getKitchenGallery($kitchenIds) {
+function getFurnitureGallery($furnitureIds) {
     $gallery = [];
-    foreach ($kitchenIds as $id) {
+    foreach ($furnitureIds as $id) {
         $gallery[] = [
             'thumbnail' => wp_get_attachment_image_src($id, 'thumbnail'),
             'medium' => wp_get_attachment_image_src($id, 'medium'),
@@ -30,8 +30,8 @@ function getKitchenGallery($kitchenIds) {
 }
 
 add_action( 'rest_api_init', function () {
-    register_rest_route( 'shop/v1', '/kitchens/', array(
+    register_rest_route( 'shop/v1', '/furniture/', array(
         'methods' => 'GET',
-        'callback' => 'get_kitchens',
+        'callback' => 'get_furniture',
     ) );
 } );

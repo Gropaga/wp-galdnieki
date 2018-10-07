@@ -10,8 +10,8 @@ Author: Maksims Vorobjovs
 Version: 0.1
 */
 
-include_once 'KitchenPage.php';
-KitchenPage::create();
+include_once 'FurniturePage.php';
+FurniturePage::create();
 
 include_once 'StairsPage.php';
 StairsPage::create();

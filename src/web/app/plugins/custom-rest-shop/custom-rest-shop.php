@@ -25,7 +25,7 @@ require_once('windows.php');
 require_once('window.php');
 require_once('stairs.php');
 require_once('contacts.php');
-require_once('kitchens.php');
+require_once('furniture.php');
 require_once('polylang.php');
 
 ?>

@@ -3,7 +3,7 @@
 include_once 'home.php';
 include_once 'contacts.php';
 include_once 'stairs.php';
-include_once 'kitchens.php';
+include_once 'furniture.php';
 include_once 'door.php';
 include_once 'doors.php';
 include_once 'interior.php';
@@ -24,16 +24,16 @@ $customPostTypesSettings = [
             'all' => 'get_contacts',
         ]
     ],
+    'furniture' => [
+        'path' => 'furniture',
+        'func' => [
+            'all' => 'get_furniture',
+        ]
+    ],
     'stairs' => [
         'path' => 'stairs',
         'func' => [
             'all' => 'get_stairs',
-        ]
-    ],
-    'kitchen' => [
-        'path' => 'kitchens',
-        'func' => [
-            'all' => 'get_kitchens',
         ]
     ],
     'door' => [
