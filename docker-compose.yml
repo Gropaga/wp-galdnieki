@@ -3,7 +3,7 @@ services:
   front:
       image: nginx:latest
       ports:
-        - "8888:80"
+        - "88:80"
       volumes:
         - ./bin:/bin
         - ./src/web/app/uploads:/images

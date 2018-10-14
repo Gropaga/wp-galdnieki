@@ -1,3 +1,5 @@
+bin/
+
 *.log
 
 src/web/app/cache/*
@@ -84,3 +86,5 @@ fabric.properties
 .idea/httpRequests
 
 composer.lock
+
+.DS_Store
