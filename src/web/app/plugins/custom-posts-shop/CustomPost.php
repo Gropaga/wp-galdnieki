@@ -64,7 +64,15 @@ class CustomPost {
             return;
         }
 
-        save_json_cache(static::POST_TYPE, $post->ID);
+        // Updating the doorColor meta data
+        if (function_exists('pll_languages_list')) {
+            foreach (pll_languages_list() as $lang) {
+                save_json_cache(static::POST_TYPE, pll_get_post($post->ID, $lang));
+            }
+        } else {
+            save_json_cache(static::POST_TYPE, $post->ID);
+        }
+
         save_json_cache(static::POST_TYPE);
         save_json_cache('home');
     }
