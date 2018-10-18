@@ -17,11 +17,11 @@ function window_query($query_array) {
                     $color[$key]['gallery'] = [];
                     foreach ($galleryImages as $gI) {
                         $color[$key]['gallery'][] = [
-                            'thumbnail' => str_replace(wp_get_upload_dir()['baseurl'], '/images', wp_get_attachment_image_src($gI, 'thumbnail')),
-                            'medium' => str_replace(wp_get_upload_dir()['baseurl'], '/images', wp_get_attachment_image_src($gI, 'medium')),
-                            'medium_large' => str_replace(wp_get_upload_dir()['baseurl'], '/images', wp_get_attachment_image_src($gI, 'medium_large')),
-                            'full' => str_replace(wp_get_upload_dir()['baseurl'], '/images', wp_get_attachment_image_src($gI, 'full')),
-                            'large' => str_replace(wp_get_upload_dir()['baseurl'], '/images', wp_get_attachment_image_src($gI, 'large'))
+                            'thumbnail' => str_replace(wp_get_upload_dir()['baseurl'], '', wp_get_attachment_image_src($gI, 'thumbnail')),
+                            'medium' => str_replace(wp_get_upload_dir()['baseurl'], '', wp_get_attachment_image_src($gI, 'medium')),
+                            'medium_large' => str_replace(wp_get_upload_dir()['baseurl'], '', wp_get_attachment_image_src($gI, 'medium_large')),
+                            'full' => str_replace(wp_get_upload_dir()['baseurl'], '', wp_get_attachment_image_src($gI, 'full')),
+                            'large' => str_replace(wp_get_upload_dir()['baseurl'], '', wp_get_attachment_image_src($gI, 'large'))
                         ];
                     }
                 }
