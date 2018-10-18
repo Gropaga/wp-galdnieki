@@ -13,3 +13,8 @@
 0. Add lv and ru in Polylang
 0. Goto Polylang settings and enable `Custom post types and Taxonomies` for Doors post
 0. Goto permalink settings and enable `http://localhost:8080/sample-post/`, this enables `http://localhost:8080/wp-json/` Rest API
+
+### Move files to prod
+
+0.
+0. `scp /Users/gropaga/Documents/wp-galdnieki/bin/* max@galdnieks:/home/max/www/wp-galdnieki/bin`

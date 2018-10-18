@@ -1,4 +1,6 @@
-# SERVER SETUP
+# VPS SETUP
+
+### GET VPS AND SETUP USERS
 
 1. Buy https://www.ovh.com/world/vps/vps-ssd.xml
 2. Login via SSH using provided password e.g. `ssh root@vps1111111.ovh.net`. If password was not provided then change it by rebooting server into 'rescue mode' and reseting the password (url: https://docs.ovh.com/gb/en/vps/root-password/)
@@ -26,3 +28,18 @@ HostName vps1111111.ovh.net
     User root
     IdentityFile ~/.ssh/id_rsa
 ```
+
+
+### SETUP DOCKER
+0. Find the tutorial at https://blog.ssdnodes.com/blog/tutorial-getting-started-with-docker-on-your-vps/
+0. Installing Docker `sudo curl -sS https://get.docker.com/ | sh`
+0. Test by `sudo docker run hello-world`
+0. Autostart `sudo systemctl enable docker`
+0. Ability to control docker by some user: `sudo groupadd docker` && `sudo usermod -aG docker $USER`
+0. `docker run hello-world`
+0. Install LAMP if required `sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose`
+0. Ability to run `chmod +x /usr/local/bin/docker-compose`
+0. Create dir `mkdir $HOME/apache && cd $HOME/apache` 
+0. Create file `printf '<?php\n  phpinfo(); \n?>' > info.php`
+0. Run image `docker run -d --name=apache -p 8080:80 -v $HOME/apache:/var/www/html php:apache`
+0. Test via `youraddress:80`

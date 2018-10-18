@@ -1,4 +1,7 @@
 bin/
+!bin/index.html
+
+docker-compose.prod.yml
 
 *.log
 

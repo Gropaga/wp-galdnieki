@@ -4,3 +4,7 @@
 3. Find current line `fac248aebe86        wp-galdnieki_default   bridge              local` where `fac248aebe86` is the network id
 4. Run `docker inspect fac248aebe86` - find `"Name": "wp-galdnieki_mysql_1"`
 5. Copy IPAddress `172.18.0.3` or name `wp-galdnieki_mysql_1` into required MySQL config in `wp-galdnieki/src/.env`
+
+### Run production
+0. Create `docker-compose.prod.yml`
+0. Run `docker-compose -f docker-compose.prod.yml up -d` runs in detached via `-d` key

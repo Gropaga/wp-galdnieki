@@ -66,7 +66,7 @@ function save_json_cache($type, $id = null) {
 
     if ($id) {
         $func = $customPostTypesSettings[$type]['func']['single'];
-        $data = $func($id);
+        $data = $func(['id' => $id]);
         $path = SHOP_CACHE_DIR . '/' . $customPostTypesSettings[$type]['path'];
         $file = $id . '.json';
     } else {
