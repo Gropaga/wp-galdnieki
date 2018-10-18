@@ -45,20 +45,22 @@ class CustomPost {
         }
     }
 
-    public static function cache_json_post_remove($post_id) {
+    public static function cache_json_post_remove() {
         global $post;
 
         if ($post->post_type != static::POST_TYPE) {
             return;
         }
 
-        remove_json_cache(static::POST_TYPE, $post_id);
+        remove_json_cache(static::POST_TYPE, $post->ID);
         save_json_cache(static::POST_TYPE);
         save_json_cache('home');
     }
 
     public static function cache_json_post($post_id) {
         global $post;
+
+        $post_temp = $post;
 
         if (!$post || (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) || $post->post_type != static::POST_TYPE) {
             return;
@@ -73,6 +75,8 @@ class CustomPost {
             save_json_cache(static::POST_TYPE, $post_id);
         }
 
+        $post = $post_temp;
+
         save_json_cache(static::POST_TYPE);
         save_json_cache('home');
     }
@@ -85,7 +89,7 @@ class CustomPost {
             static::POST_TYPE); // post type
     }
 
-    public static function color_html($post_id) {
+    public static function color_html() {
         global $post;
         // Use nonce for verification
         wp_nonce_field( plugin_basename( __FILE__ ), static::POST_TYPE . '_color_nonce' );
@@ -94,7 +98,7 @@ class CustomPost {
         <?php
 
         //Obtaining the linked windowcolor meta values
-        $colorArray = get_post_meta($post_id,static::POST_TYPE . 'Color',true);
+        $colorArray = get_post_meta($post->ID,static::POST_TYPE . 'Color',true);
         $count = 0;
         if (is_array($colorArray) && count($colorArray) > 0) {
             foreach( $colorArray as $colorDetails ) {
@@ -218,7 +222,7 @@ class CustomPost {
         ); // post type
     }
 
-    public static function price_html($post_id, $arguments) {
+    public static function price_html($post, $arguments) {
         $options = ($arguments['args']);
 
         global $post;
@@ -228,7 +232,7 @@ class CustomPost {
         <div id="meta_item">
         <?php
 
-        $price = get_post_meta($post_id,static::POST_TYPE . 'Price',true);
+        $price = get_post_meta($post->ID,static::POST_TYPE . 'Price',true);
 
         $count = 0;
         if (is_array($price) && count($price) > 0) {
@@ -366,7 +370,7 @@ class CustomPost {
             static::POST_TYPE); // post type
     }
 
-    public static function landing_page_html($post_id) {
+    public static function landing_page_html() {
         global $post;
         // Use nonce for verification
         wp_nonce_field( plugin_basename( __FILE__ ), 'landing_page_checkbox_nonce' );
@@ -374,7 +378,7 @@ class CustomPost {
         <div id="landing_page_checkbox_meta_item">
         <?php
 
-        $showOnFrontpage = get_post_meta($post_id,'showOnLandingPage',true);
+        $showOnFrontpage = get_post_meta($post->ID,'showOnLandingPage',true);
         ?>
         <ul><?php pll_the_languages(); ?></ul>
         <p>
