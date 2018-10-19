@@ -43,3 +43,14 @@ HostName vps1111111.ovh.net
 0. Create file `printf '<?php\n  phpinfo(); \n?>' > info.php`
 0. Run image `docker run -d --name=apache -p 8080:80 -v $HOME/apache:/var/www/html php:apache`
 0. Test via `youraddress:80`
+
+### HTTPS - https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx
+
+0. `$ sudo apt-get update`
+0. `$ sudo apt-get install software-properties-common`
+0. `$ sudo add-apt-repository ppa:certbot/certbot`
+0. `$ sudo apt-get update`
+0. `$ sudo apt-get install python-certbot-nginx`
+0. `sudo certbot certonly` - follow instructions. After complete check `/etc/letsencrypt` for results
+     
+      

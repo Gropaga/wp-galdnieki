@@ -2,6 +2,7 @@ bin/
 !bin/index.html
 
 docker-compose.prod.yml
+site-front.prod.conf
 
 *.log
 
