@@ -60,22 +60,18 @@ class CustomPost {
     public static function cache_json_post($post_id) {
         global $post;
 
-        $post_temp = $post;
-
         if (!$post || (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) || $post->post_type != static::POST_TYPE) {
             return;
         }
 
         // Updating the doorColor meta data
         if (function_exists('pll_languages_list')) {
-            foreach (pll_languages_list() as $lang) {
-                save_json_cache(static::POST_TYPE, pll_get_post($post_id, $lang));
+            foreach (pll_get_post_translations($post_id) as $language => $id) {
+                save_json_cache(static::POST_TYPE, $id);
             }
         } else {
             save_json_cache(static::POST_TYPE, $post_id);
         }
-
-        $post = $post_temp;
 
         save_json_cache(static::POST_TYPE);
         save_json_cache('home');
@@ -318,8 +314,8 @@ class CustomPost {
         }
 
         if (function_exists('pll_languages_list')) {
-            foreach (pll_languages_list() as $lang) {
-                update_post_meta(pll_get_post($post_id, $lang),static::POST_TYPE . 'Price', $normalizedDoorPrice);
+            foreach (pll_get_post_translations($post_id) as $language => $id) {
+                update_post_meta(pll_get_post($id, $language),static::POST_TYPE . 'Price', $normalizedDoorPrice);
             }
         } else {
             update_post_meta($post_id,static::POST_TYPE . 'Price', $normalizedDoorPrice);
@@ -354,8 +350,8 @@ class CustomPost {
 
         // Updating the doorColor meta data
         if (function_exists('pll_languages_list')) {
-            foreach (pll_languages_list() as $lang) {
-                update_post_meta(pll_get_post($post_id, $lang),static::POST_TYPE . 'Color',$normalizedDoorColor);
+            foreach (pll_get_post_translations($post_id) as $language => $id) {
+                update_post_meta(pll_get_post($id, $language),static::POST_TYPE . 'Color',$normalizedDoorColor);
             }
         } else {
             update_post_meta($post_id,static::POST_TYPE . 'Color', $normalizedDoorColor);
@@ -401,8 +397,8 @@ class CustomPost {
         $showOnlandingPage = $_POST['showOnLandingPage'] ?? 0;
 
         if (function_exists('pll_languages_list')) {
-            foreach (pll_languages_list() as $lang) {
-                update_post_meta(pll_get_post($post_id, $lang),'showOnLandingPage',$showOnlandingPage);
+            foreach (pll_get_post_translations($post_id) as $language => $id) {
+                update_post_meta(pll_get_post($id, $language),'showOnLandingPage',$showOnlandingPage);
             }
         } else {
             update_post_meta($post_id,'showOnLandingPage',$showOnlandingPage);
