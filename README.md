@@ -18,3 +18,5 @@
 ### Move files to prod
 
 0. `scp /Users/gropaga/Documents/wp-galdnieki/bin/* max@galdnieks:/home/max/www/wp-galdnieki/bin`
+0. `scp /Users/gropaga/Documents/wp-galdnieki/site-front.prod.conf max@galdnieks:/home/max/www/wp-galdnieki/site-front.prod.conf`
+0. `scp /Users/gropaga/Documents/wp-galdnieki/docker-compose.prod.yml max@galdnieks:/home/max/www/wp-galdnieki/docker-compose.prod.yml`

@@ -6,5 +6,6 @@
 5. Copy IPAddress `172.18.0.3` or name `wp-galdnieki_mysql_1` into required MySQL config in `wp-galdnieki/src/.env`
 
 ### Run production
-0. Create `docker-compose.prod.yml`
+
+0. 
 0. Run `docker-compose -f docker-compose.prod.yml up -d` runs in detached via `-d` key
