@@ -2,7 +2,7 @@
 
 require_once 'door-query.php';
 require_once 'window-query.php';
-require_once 'painting-query.php';
+require_once 'interior-query.php';
 
 function get_home() {
     return [
@@ -27,8 +27,8 @@ function get_home() {
                     )
                 ),
             ]),
-            'paintings' => painting_query([
-                'post_type' => 'painting',
+            'interiors' => interior_query([
+                'post_type' => 'interior',
                 'lang' => 'ru, lv',
                 'meta_query' => array(
                     array(
