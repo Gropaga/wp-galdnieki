@@ -3,6 +3,8 @@ bin/
 
 docker-compose.prod.yml
 site-front.prod.conf
+site-back.prod.conf
+.htpasswd
 
 *.log
 

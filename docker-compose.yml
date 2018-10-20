@@ -15,7 +15,7 @@ services:
       - "8080:80"
     volumes:
       - ./src/web:/src/web
-      - ./site.conf:/etc/nginx/conf.d/default.conf
+      - ./site-back.conf:/etc/nginx/conf.d/default.conf
     links:
       - php
   php:
