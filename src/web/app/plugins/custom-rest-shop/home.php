@@ -3,8 +3,13 @@
 require_once 'door-query.php';
 require_once 'window-query.php';
 require_once 'interior-query.php';
+require_once 'jumbotron.php';
 
 function get_home() {
+    $jumbotronData = get_jumbotron();
+    $jumbotronImage = sizeof($jumbotronData['data']['jumbotron']['gallery']) > 0 ? $jumbotronData['data']['jumbotron']['gallery'][0]['full'][0] : '';
+    $description = $jumbotronData['data']['jumbotron']['description'];
+
     return [
         'data' => [
             'doors' => door_query([
@@ -38,25 +43,8 @@ function get_home() {
                 ),
             ]),
             'home' => [
-                'landingImage' => get_header_image(),
-                'jumbo' => [
-                    [
-                        'locale' => 'lv',
-                        'heading' => 'Heading (lv)',
-                        'subText' => 'Sub text (lv)',
-                        'text' => 'Text (lv)',
-                        'buttonText' => 'Button text (lv)',
-                        'buttonLink' => '/'
-                    ],
-                    [
-                        'locale' => 'ru',
-                        'heading' => 'Heading (ru)',
-                        'text' => 'Text (ru)',
-                        'subText' => 'Sub text (ru)',
-                        'buttonText' => 'Button text (ru)',
-                        'buttonLink' => '/ru'
-                    ]
-                ],
+                'landingImage' => $jumbotronImage,
+                'jumbo' => $description,
             ]
         ],
     ];

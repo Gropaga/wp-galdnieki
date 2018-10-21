@@ -19,7 +19,6 @@ class CustomPage {
     public static function plugin_settings() {
         //register our settings
         register_setting(static::PAGE_TYPE . '-pricing', static::PAGE_TYPE . '-gallery');
-        register_setting(static::PAGE_TYPE . '-pricing', static::PAGE_TYPE . '-save-time');
 
         if (function_exists('pll_languages_list')) {
             foreach (pll_languages_list() as $lang) {
@@ -28,6 +27,8 @@ class CustomPage {
         } else {
             register_setting(static::PAGE_TYPE . '-pricing', static::PAGE_TYPE . '-description');
         }
+        // important to have -save-time to fire last
+        register_setting(static::PAGE_TYPE . '-pricing', static::PAGE_TYPE . '-save-time');
 
         // gallery
         wp_enqueue_media();

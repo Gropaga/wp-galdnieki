@@ -18,3 +18,6 @@ StairsPage::create();
 
 include_once 'ContactsPage.php';
 ContactsPage::create();
+
+include_once 'JumbotronPage.php';
+JumbotronPage::create();
