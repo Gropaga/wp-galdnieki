@@ -1,5 +1,14 @@
-bin/
-!bin/index.html
+bin/*
+!bin/android-chrome-192x192.png
+!bin/android-chrome-256x256.png
+!bin/apple-touch-icon.png
+!bin/browserconfig.xml
+!bin/favicon-16x16.png
+!bin/favicon-32x32.png
+!bin/favicon.ico
+!bin/mstile-150x150.png
+!bin/safari-pinned-tab.svg
+!bin/site.webmanifest
 
 docker-compose.prod.yml
 site-front.prod.conf
