@@ -1,6 +1,7 @@
 <?php
 
 include_once WP_PLUGIN_DIR . '/custom-rest-shop/cache.php';
+include_once WP_PLUGIN_DIR . '/custom-rest-shop/robots.php';
 
 class CustomPage {
     const PAGE_TYPE = '__NOTHING__';
@@ -13,6 +14,7 @@ class CustomPage {
         add_action( 'update_option_' . static::PAGE_TYPE . '-save-time', function($old_value, $value, $option ) {
             save_json_cache('home');
             save_json_cache(static::PAGE_TYPE);
+            create_sitemap();
         }, 10, 3 );
     }
 

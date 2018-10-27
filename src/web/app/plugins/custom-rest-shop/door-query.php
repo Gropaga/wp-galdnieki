@@ -32,6 +32,7 @@ function door_query($query_array) {
 
         $doors[$doorsQuery->post->ID] = [
             'id' => $doorsQuery->post->ID,
+            'modified' => $doorsQuery->post->post_modified,
             'locale' => $locale,
             'title' => $doorsQuery->post->post_title,
             'content' => $doorsQuery->post->post_content,

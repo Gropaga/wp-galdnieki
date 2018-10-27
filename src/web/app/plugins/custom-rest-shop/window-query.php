@@ -32,6 +32,7 @@ function window_query($query_array) {
 
         $windows[$windowsQuery->post->ID] = [
             'id' => $windowsQuery->post->ID,
+            'modified' => $windowsQuery->post->post_modified,
             'locale' => $locale,
             'title' => $windowsQuery->post->post_title,
             'content' => $windowsQuery->post->post_content,

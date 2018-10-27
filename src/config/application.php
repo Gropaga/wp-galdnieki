@@ -83,3 +83,4 @@ if (!defined('ABSPATH')) {
 }
 
 define( 'SHOP_CACHE_DIR',  WP_CONTENT_DIR . '/cache' );
+define( 'SHOP_SITEMAP_DIR',  WP_CONTENT_DIR . '/sitemap' );

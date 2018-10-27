@@ -32,6 +32,7 @@ function interior_query($query_array) {
 
         $interiors[$interiorsQuery->post->ID] = [
             'id' => $interiorsQuery->post->ID,
+            'modified' => $interiorsQuery->post->post_modified,
             'locale' => $locale,
             'title' => $interiorsQuery->post->post_title,
             'content' => $interiorsQuery->post->post_content,

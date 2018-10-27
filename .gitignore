@@ -30,6 +30,8 @@ src/web/app/mu-plugins/*/
 src/web/app/upgrade
 src/web/app/uploads/*
 !src/web/app/uploads/.gitkeep
+src/web/app/sitemap/*
+!src/web/app/sitemap/.gitkeep
 
 # WordPress
 src/web/wp
