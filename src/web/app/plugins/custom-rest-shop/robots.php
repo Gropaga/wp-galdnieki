@@ -105,9 +105,7 @@ function create_sitemap() {
             ]];
         }
     }
-
-    dd($sitemapArray);
-
+    
     save_sitemap($sitemapArray);
 }
 
